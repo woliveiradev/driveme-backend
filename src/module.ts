@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ContextModule } from 'core/context';
 import { EventBridgeModule } from 'core/event-bridge';
-import { ExceptionsModule } from 'core/exceptions';
+import { HttpModule } from 'core/http';
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { ExceptionsModule } from 'core/exceptions';
       isGlobal: true,
     }),
     ContextModule,
-    ExceptionsModule,
+    HttpModule,
     EventBridgeModule,
   ],
 })

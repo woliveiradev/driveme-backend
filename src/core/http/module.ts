@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common';
 import { APP_FILTER } from '@nestjs/core';
-import { HttpExceptionHandler } from './http.exception';
+import { Module } from '@nestjs/common';
+import { HttpExceptionHandler } from './exceptions/http.exception';
 
 @Module({
   providers: [
@@ -10,4 +10,4 @@ import { HttpExceptionHandler } from './http.exception';
     },
   ],
 })
-export class ExceptionsModule {}
+export class HttpModule {}
