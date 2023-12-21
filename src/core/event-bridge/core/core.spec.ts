@@ -1,6 +1,5 @@
 import { randomUUID } from 'crypto';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { LoggerStub } from 'core/logger/stubs/logger.stub';
 import { BridgeCore } from './core.bridge';
 import { Event } from '../event/event.bridge';
 import { EventActionStub } from './stubs/event-action.stub';
@@ -13,8 +12,7 @@ let bridgeCore: BridgeCore;
 
 beforeEach(() => {
   event = new Event('Test.EventEmitted', {}, randomUUID());
-  const logger = new LoggerStub();
-  bridgeCore = new BridgeCore(logger);
+  bridgeCore = new BridgeCore();
   eventActionStub = new EventActionStub();
 });
 

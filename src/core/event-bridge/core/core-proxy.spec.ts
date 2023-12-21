@@ -1,5 +1,4 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { LoggerStub } from 'core/logger/stubs/logger.stub';
 import { BridgeCoreProxy } from './core-proxy.bridge';
 import { BridgeCore } from './core.bridge';
 import { Event } from '../event/event.bridge';
@@ -16,8 +15,7 @@ let eventActionStub: EventAction;
 
 beforeEach(() => {
   event = new Event('Test.EventEmitted', {});
-  const logger = new LoggerStub();
-  bridgeCore = new BridgeCore(logger);
+  bridgeCore = new BridgeCore();
   bridgeCoreProxy = new BridgeCoreProxy(bridgeCore);
   eventActionStub = new EventActionStub();
 });
