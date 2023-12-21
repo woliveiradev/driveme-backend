@@ -1,24 +1,27 @@
 import { AsyncLocalStorage } from 'async_hooks';
 import { ContextNotFound } from './exceptions/context-not-found.exception';
+import { AppContext, ContextCallback } from './types';
 
-export class Context {
-  static readonly store = new AsyncLocalStorage();
+export class Context<ContextProps = unknown>
+  implements AppContext<ContextProps>
+{
+  private readonly store: AsyncLocalStorage<ContextProps>;
 
-  static has(): boolean {
-    return !!this.store.getStore();
+  constructor() {
+    this.store = new AsyncLocalStorage();
   }
 
-  static get() {
-    /*
-      ContextNotFound is an error that should only happen in development so that
-      the developer doesn't try to take context data when it doesn't exist
-     */
+  public new(context: ContextProps, callback: ContextCallback): void {
+    this.store.run(context, callback);
+  }
+
+  public getStore(): ContextProps {
     const store = this.store.getStore();
     if (!store) throw new ContextNotFound();
     return store;
   }
 
-  static new(context: any, callback: () => unknown): void {
-    this.store.run(context, callback);
+  public has(): boolean {
+    return !!this.store.getStore();
   }
 }

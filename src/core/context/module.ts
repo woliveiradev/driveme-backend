@@ -1,11 +1,15 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { ContextMiddleware } from './middleware.context';
+import { Module } from '@nestjs/common';
+import { Context } from './context';
+
+export const APP_CONTEXT_TOKEN = Symbol('CONTEXT');
 
 @Module({
-  providers: [ContextMiddleware],
+  providers: [
+    {
+      provide: APP_CONTEXT_TOKEN,
+      useClass: Context,
+    },
+  ],
+  exports: [APP_CONTEXT_TOKEN],
 })
-export class ContextModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(ContextMiddleware).forRoutes('*');
-  }
-}
+export class ContextModule {}

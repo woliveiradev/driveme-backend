@@ -1,8 +1,9 @@
 import * as winston from 'winston';
 import { ConfigService } from '@nestjs/config';
 import { Inject } from '@nestjs/common';
-import { Context } from 'core/context';
+import { APP_CONTEXT_TOKEN } from 'core/context';
 import { Logger, LoggerLevel } from './types';
+import { AppContext, RequestContextProps } from 'core/context/types';
 
 export class WinstonLogger implements Logger {
   private readonly logger: winston.Logger;
@@ -10,6 +11,8 @@ export class WinstonLogger implements Logger {
   constructor(
     @Inject(ConfigService)
     private readonly environment: ConfigService,
+    @Inject(APP_CONTEXT_TOKEN)
+    private readonly appContext: AppContext<RequestContextProps>,
   ) {
     const isProduction = this.environment.get('NODE_ENV') === 'production';
     this.logger = winston.createLogger({
@@ -44,8 +47,8 @@ export class WinstonLogger implements Logger {
 
   private log(level: LoggerLevel, message: string, stackTrace?: any): void {
     const logMessage = { level, message, stackTrace, meta: {} };
-    if (Context.has()) {
-      const context = Context.get();
+    if (this.appContext.has()) {
+      const context = this.appContext.getStore();
       logMessage.meta = context;
     }
     this.logger.log(logMessage);
