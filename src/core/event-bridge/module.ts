@@ -3,7 +3,6 @@ import { Module } from '@nestjs/common';
 import { BridgeCoreProxy } from './core/core-proxy.bridge';
 import { BridgeCore } from './core/core.bridge';
 import { EventBridge } from './core/types';
-import { LOGGER_TOKEN, Logger } from 'core/logger';
 import { OnTopicDiscovery } from './decorators/on-topic.decorator';
 
 export const EVENT_BRIDGE_TOKEN = Symbol('EVENT_BRIDGE');
@@ -15,10 +14,7 @@ const ON_TOPIC_TOKEN = Symbol('ON_TOPIC');
   providers: [
     {
       provide: BRIDGE_CORE_TOKEN,
-      useFactory: (logger: Logger) => {
-        return new BridgeCore(logger);
-      },
-      inject: [LOGGER_TOKEN],
+      useClass: BridgeCore,
     },
     {
       provide: EVENT_BRIDGE_TOKEN,

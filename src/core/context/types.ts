@@ -5,7 +5,3 @@ export interface AppContext<ContextProps> {
   getStore: () => ContextProps;
   has: () => boolean;
 }
-
-export interface RequestContextProps {
-  correlationId: string;
-}
