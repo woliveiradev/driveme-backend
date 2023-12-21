@@ -1,10 +1,9 @@
 {
-  "name": "nestjs-blueprint",
+  "name": "driveme",
   "version": "0.0.1",
-  "description": "A nestjs template for Domain Driven Design projects",
+  "description": "Backend of an urban transport application",
   "author": "Wesley Oliveira",
   "private": true,
-  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
