@@ -1,9 +1,9 @@
-import { Event } from '../event/event.bridge';
 import { eventTopicRules, topicRules } from './constants';
 import { InvalidTopicFormat } from './exceptions/invalid-topic-format.exception';
 import { TopicNotRegistered } from './exceptions/topic-not-registered.exception';
 import { WILDCARD } from './utils/with-wildcard.util';
-import { EventAction, EventBridge } from './types';
+import { Event } from '../event/event.bridge';
+import type { EventAction, EventBridge } from './types';
 
 export class BridgeCoreProxy implements EventBridge {
   constructor(private readonly bridgeCore: EventBridge) {}

@@ -1,5 +1,5 @@
-import { DiscoveryModule, DiscoveryService } from '@nestjs/core';
 import { Module } from '@nestjs/common';
+import { DiscoveryModule, DiscoveryService } from '@nestjs/core';
 import { BridgeCoreProxy } from './core/core-proxy.bridge';
 import { BridgeCore } from './core/core.bridge';
 import { EventBridge } from './core/types';

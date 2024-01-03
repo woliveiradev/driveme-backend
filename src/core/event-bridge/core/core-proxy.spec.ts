@@ -1,12 +1,12 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { BridgeCoreProxy } from './core-proxy.bridge';
 import { BridgeCore } from './core.bridge';
-import { Event } from '../event/event.bridge';
 import { InvalidTopicFormat } from './exceptions/invalid-topic-format.exception';
 import { TopicNotRegistered } from './exceptions/topic-not-registered.exception';
 import { EventActionStub } from './stubs/event-action.stub';
-import { WILDCARD, withWildcard } from './utils/with-wildcard.util';
 import { EventAction } from './types';
+import { WILDCARD, withWildcard } from './utils/with-wildcard.util';
+import { Event } from '../event/event.bridge';
 
 let event: Event;
 let bridgeCore: BridgeCore;

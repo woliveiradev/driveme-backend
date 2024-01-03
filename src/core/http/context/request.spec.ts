@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { RequestContext } from './request.context';
 import { ContextNotFound } from './exceptions/context-not-found.exception';
+import { RequestContext } from './request.context';
 import { HttpContext, HttpContextProps } from './types';
 
 let requestContext: HttpContext;

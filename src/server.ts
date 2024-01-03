@@ -1,7 +1,7 @@
-import { NestFactory } from '@nestjs/core';
 import { HttpStatus, VersioningType } from '@nestjs/common';
-import { RootModule } from './module';
+import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
+import { RootModule } from './module';
 
 async function bootstrap() {
   const app = await NestFactory.create(RootModule);

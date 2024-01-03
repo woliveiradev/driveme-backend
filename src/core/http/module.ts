@@ -1,7 +1,7 @@
-import { APP_FILTER } from '@nestjs/core';
 import { Module } from '@nestjs/common';
-import { HttpExceptionHandler } from './exceptions/http.exception';
+import { APP_FILTER } from '@nestjs/core';
 import { RequestContext } from './context';
+import { HttpExceptionHandler } from './exceptions/http.exception';
 
 export const APP_CONTEXT_TOKEN = Symbol('CONTEXT');
 

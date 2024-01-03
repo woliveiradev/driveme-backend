@@ -1,6 +1,6 @@
-import { Event } from '../event/event.bridge';
-import { EventAction, EventBridge } from './types';
 import { WILDCARD, withWildcard } from './utils/with-wildcard.util';
+import { Event } from '../event/event.bridge';
+import type { EventAction, EventBridge } from './types';
 
 export class BridgeCore implements EventBridge {
   private readonly router: Map<string, EventAction[]> = new Map();

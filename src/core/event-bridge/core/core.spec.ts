@@ -1,10 +1,10 @@
 import { randomUUID } from 'crypto';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { BridgeCore } from './core.bridge';
-import { Event } from '../event/event.bridge';
 import { EventActionStub } from './stubs/event-action.stub';
-import { WILDCARD, withWildcard } from './utils/with-wildcard.util';
 import { EventAction } from './types';
+import { WILDCARD, withWildcard } from './utils/with-wildcard.util';
+import { Event } from '../event/event.bridge';
 
 let event: Event;
 let eventActionStub: EventAction;
